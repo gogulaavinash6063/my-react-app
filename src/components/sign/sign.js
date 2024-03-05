@@ -3,8 +3,9 @@ import {  Link, useNavigate } from "react-router-dom"
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import image1 from "./kafene.jpeg"
-import image2 from "./th.jpeg"
+import image1 from "./image.png"
+import "./LoginPage.css"
+
 
 
 
@@ -15,7 +16,7 @@ const LoginPage=()=>{
   
   
   const Newh=()=>{
-     history("/navbarB")
+     history("/orders")
     }
 
   const handleClick=(event)=>{
@@ -28,7 +29,7 @@ const LoginPage=()=>{
       Newh()
     }
     else{
-      alert("inavaild details")
+      alert("username and password must be equal")
     }
   }
   const handleUser=(event)=>{
@@ -41,8 +42,9 @@ const LoginPage=()=>{
     < div style={{
       backgroundImage:`url(${image1})`,
       backgroundRepeat:"no-repeat",
-      backgroundSize:"cover",
-      backgroundPosition:"center"
+      backgroundSize:"auto",
+      backgroundPosition:"center",
+      
     }}>
     <Navbar bg="dark" data-bs-theme="dark">
         <Container>
@@ -66,27 +68,19 @@ const LoginPage=()=>{
           </Nav>
         </Container>
       </Navbar>
-    <form onSubmit={handleClick} style={{
-      //  backgroundImage: `url(${image1})`,
-      //  backgroundRepeat:"no-repeat",
-      //  backgroundSize:"cover",
-      width:"400px",
-      height:"400px",
-      border:"2px solid black",
-      borderStyle:"groove",
-      position:"relative",
-      left:"550px",
-      top:"150px"
-    }}>
-      <div style={{
-        position:"relative",
-        left:"50px",
-        top:"120px"
-      }}>
+      
+      <form id="form" onSubmit={handleClick}><header>
+    <h2>LOGIN</h2>
+  </header>
       <input type="text" placeholder="Enter Username..." value={user} onChange={handleUser} style={{width:"300px",height:"40px",borderStyle:"inset",border:"2px solid black",borderRadius:"8px",padding:"5px"}}/><br/><br/>
-      <input type="text" placeholder=" Enter Password..." value={pass} onChange={handlePass} style={{width:"300px",height:"40px",borderStyle:"outset",border:"2px solid black",borderRadius:"8px",padding:"5px"}}/> <br/><br/>
+      <input type="password" placeholder=" Enter Password..." value={pass} onChange={handlePass} style={{width:"300px",height:"40px",borderStyle:"outset",border:"2px solid black",borderRadius:"8px",padding:"5px"}}/> <br/><br/>
       <button type="submit" >Submit</button>
-      </div>
+    <Link to={"/orders"} style={{
+      textDecoration:"none",
+      color:"black",
+      position:"relative",
+      left:"150px"
+    }}>Skip---></Link>
     </form>
     
     </div>

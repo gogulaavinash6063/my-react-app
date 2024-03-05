@@ -8,7 +8,8 @@ const Order = () => {
   const [filteredStatus, setFilteredStatus] = useState([]);
 
   useEffect(() => {
-    axios.get("https://5fc1a1c9cb4d020016fe6b07.mockapi.io/api/v1/orders").then((response) => {
+    axios.get("https://5fc1a1c9cb4d020016fe6b07.mockapi.io/api/v1/orders")
+    .then((response) => {
       setProducts(response.data);
     });
   }, [])
@@ -30,7 +31,7 @@ const Order = () => {
   const handleNew = () => {
     const newOrders = products.filter((product) => product.orderStatus === "New");
     setCount(newOrders.length);
-    setProducts(newOrders);
+   setProducts(newOrders);
     setFilteredStatus(["New"]);
   }
   const handlePacked = () => {
@@ -42,7 +43,7 @@ const Order = () => {
   const handleTransit = () => {
     const newOrders = products.filter((product) => product.orderStatus === "InTransit");
     setCount(newOrders.length);
-    setProducts(newOrders);
+   setProducts(newOrders);
     setFilteredStatus(["InTransit"]);
   }
   const handleDelivered = () => {
