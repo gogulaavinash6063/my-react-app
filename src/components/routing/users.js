@@ -1,97 +1,102 @@
-import { useEffect, useState } from "react"
-import NavbarB from "../header/header"
-import axios from "axios"
 
-const Users=()=>{
-    const [user,setUser]=useState([])
-    const [originalUsers, setOriginalUsers] = useState([]);
-    const [search,setSearch]=useState("")
-    useEffect(()=>{
-        axios.get("https://5fc1a1c9cb4d020016fe6b07.mockapi.io/api/v1/users")
-        .then(response=>{
-            setUser(response.data)
+import React, { useEffect, useState } from "react";
+import NavbarB from "../header/header";
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const Users = () => {
+  const [users, setUsers] = useState([]);
+  const [originalUsers, setOriginalUsers] = useState([]);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    axios.get("https://5fc1a1c9cb4d020016fe6b07.mockapi.io/api/v1/users")
+      .then(response => {
+        setUsers(response.data);
         setOriginalUsers(response.data);
-         } )
+      });
+  }, []);
 
-    },[])
+  const handleClick = (event) => {
+    event.preventDefault();
 
-    const handleClick = (event) => {
-        event.preventDefault();
-    
-        
-        if (search.length > 2) {
-          
-          const filteredUsers = user.filter((user) =>
-            user.fullName.toLowerCase().includes(search.toLowerCase())
-          );
-          setUser(filteredUsers);
-        } else {
-            setUser(originalUsers);
-          alert("Enter more than two characters");
-        }
-      };
-      
-      const handleSearch = (event) => {
-        event.preventDefault();
-        setSearch(event.target.value);
-    
-        // Reset user state to originalUsers when search input is updated
-        setUser(originalUsers);
-      };
+    if (search.length > 2) {
+      const filteredUsers = originalUsers.filter((user) =>
+        user.fullName.toLowerCase().includes(search.toLowerCase())
+      );
+      setUsers(filteredUsers);
+    } else {
+      setUsers(originalUsers);
+      alert("Enter more than two characters");
+    }
+  };
 
-    
-    return(
-        <>
-        <NavbarB/>
-        <h1 style={{
-            fontStyle:"oblique",
-            marginLeft:"100px",
-            marginTop:"50px"
-        }}>Users.....</h1>
-        <form onSubmit={handleClick}>
-         <input type="text" placeholder="Search...." style={{ width:"600px", height:"40px",marginLeft:"100px",marginTop:"25px"}}value={search} onChange={handleSearch}/>
-         <button type="submit" style={{ textDecoration:"none",width:"100px",height:"40px",marginLeft:"10px",borderRadius:"8%",color:"white",backgroundColor:"green" }}>Submit</button>
-         </form>
-         <table style={{
-            width:"900px",
-            marginLeft:"150px",
-            marginTop:"50px",
-            height:"50px"
-         }}>
-            <thead>
-                <tr style={{
-                    border:"2px solid black",
-                    height:"40px"
-                }}>
-                    <th>ID</th>
-                    <th>UserAvatar</th>
-                    <th>FullName</th>
-                    <th>DOB</th>
-                    <th>Gender</th>
-                    <th>CurrentLocation</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    user.map((item)=>(
-                        <tr>
-                            <td>{item.id}</td>
-                           <td> <img src={item.profilePic}/></td>
-                            <td>{item.fullName}</td>
-                            <td>{item.dob}</td>
-                            <td>{item.gender}</td>
-                            <td>{item.currentCity}</td>
-                        </tr>
-                       
+  const handleSearch = (event) => {
+    event.preventDefault();
+    setSearch(event.target.value);
 
-                    ))
-                }
-            </tbody>
+    // Reset users state to originalUsers when search input is updated
+    setUsers(originalUsers);
+  };
 
-         </table>
-         
+  return (
+    <>
+      <NavbarB />
+      <div className="container mt-4">
+        <h1 style={{ fontStyle: "oblique" }}>Users.....</h1>
+        <form onSubmit={handleClick} className="mb-3">
+          <div className="input-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter two or more characters to Search Users...."
+              value={search}
+              onChange={handleSearch}
+            />
+            <div className="input-group-append">
+              <button
+                type="submit"
+                className="btn btn-success"
+                style={{ borderRadius: "8%" }}
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User Avatar</th>
+              <th>Full Name</th>
+              <th>DOB</th>
+              <th>Gender</th>
+              <th>Current Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>
+                  <img
+                    src={item.profilePic}
+                    alt={`Avatar of ${item.fullName}`}
+                    style={{ maxWidth: "50px", maxHeight: "50px" }}
+                  />
+                </td>
+                <td>{item.fullName}</td>
+                <td>{item.dob}</td>
+                <td>{item.gender}</td>
+                <td>{item.currentCity}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+};
 
-        </>
-    )
-}
-export default Users
+export default Users;

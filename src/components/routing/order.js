@@ -1,107 +1,102 @@
 import { useEffect, useState } from "react";
 import NavbarB from "../header/header";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Order = () => {
-  const [products, setProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [count, setCount] = useState(0);
   const [filteredStatus, setFilteredStatus] = useState([]);
 
   useEffect(() => {
     axios.get("https://5fc1a1c9cb4d020016fe6b07.mockapi.io/api/v1/orders")
-    .then((response) => {
-      setProducts(response.data);
-    });
-  }, [])
-  
+      .then((response) => {
+        const data = response.data;
+        setAllProducts(data);
+        setFilteredProducts(data);
+      });
+  }, []);
 
-  const handleStatusChange = (status) => {
-    setFilteredStatus(status);
+  const handleFilter = (status) => {
+    const newOrders = allProducts.filter((product) => product.orderStatus === status);
+    setCount(newOrders.length);
+    setFilteredProducts(newOrders);
+    setFilteredStatus([status]);
   };
-
-  const filterItems = () => {
-    if (filteredStatus.length === 0) {
-      setProducts(products);
-    } else {
-      const filteredItems = products.filter((product) => filteredStatus.includes(product.orderStatus));
-      setProducts(filteredItems);
-    }
-  };
-
-  const handleNew = () => {
-    const newOrders = products.filter((product) => product.orderStatus === "New");
-    setCount(newOrders.length);
-   setProducts(newOrders);
-    setFilteredStatus(["New"]);
-  }
-  const handlePacked = () => {
-    const newOrders = products.filter((product) => product.orderStatus === "Packed");
-    setCount(newOrders.length);
-    setProducts(newOrders);
-    setFilteredStatus(["Packed"]);
-  }
-  const handleTransit = () => {
-    const newOrders = products.filter((product) => product.orderStatus === "InTransit");
-    setCount(newOrders.length);
-   setProducts(newOrders);
-    setFilteredStatus(["InTransit"]);
-  }
-  const handleDelivered = () => {
-    const newOrders = products.filter((product) => product.orderStatus === "Delivered");
-    setCount(newOrders.length);
-    setProducts(newOrders);
-    setFilteredStatus(["Delivered"]);
-  }
-  
 
   return (
     <>
       <NavbarB />
-      <h1 style={{ fontStyle: "oblique", marginLeft: "100px", marginTop: "50px" }}>Orders...</h1>
-      <div style={{ marginLeft: "120px", marginTop: "50px" }}>
-        <p>Count={count}</p>
-        <input type="checkbox" value={"New"} onChange={() => handleNew()} />
-        <label>New</label><br/>
-        <input type="checkbox" value={"New"} onChange={() => handlePacked()} />
-        <label>Packed</label><br/>
-        <input type="checkbox" value={"New"} onChange={() => handleTransit()} />
-        <label>InTransit</label><br/>
-        <input type="checkbox" value={"New"} onChange={() => handleDelivered()} />
-        <label>Delivered</label><br/>
-        <br />
-      </div>
-      <table
-        style={{
-          border: "2px solid black",
-          marginLeft: "100px",
-          marginTop: "40px",
-          width: "1350px",
-          height: "1200px",
-        }}
-      >
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Customer</th>
-            <th>Date</th>
-            <th>Amount</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
-              <td>{product.id}</td>
-              <td>{product.customerName}</td>
-              <td>{product.orderDate}</td>
-              <td>{product.amount}</td>
-              <td>{product.orderStatus}</td>
+      <div className="container mt-4">
+        <h1 style={{ fontStyle: "oblique" }}>Orders...</h1>
+        <div className="mb-3">
+          <div className="form-check form-check-inline">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="newCheckbox"
+              value={"New"}
+              onChange={() => handleFilter("New")}
+            />
+            <label className="form-check-label" htmlFor="newCheckbox">New</label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="packedCheckbox"
+              value={"Packed"}
+              onChange={() => handleFilter("Packed")}
+            />
+            <label className="form-check-label" htmlFor="packedCheckbox">Packed</label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="inTransitCheckbox"
+              value={"InTransit"}
+              onChange={() => handleFilter("InTransit")}
+            />
+            <label className="form-check-label" htmlFor="inTransitCheckbox">InTransit</label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="deliveredCheckbox"
+              value={"Delivered"}
+              onChange={() => handleFilter("Delivered")}
+            />
+            <label className="form-check-label" htmlFor="deliveredCheckbox">Delivered</label>
+          </div>
+        </div>
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Status</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredProducts.map((product) => (
+              <tr key={product.id}>
+                <td>{product.id}</td>
+                <td>{product.customerName}</td>
+                <td>{product.orderDate}</td>
+                <td>{product.amount}</td>
+                <td>{product.orderStatus}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
-}; 
+};
 
 export default Order;

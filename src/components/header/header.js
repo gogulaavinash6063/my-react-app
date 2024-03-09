@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import GreetingComponent from '../sign/greeting';
 
 const NavbarB = () => {
   return (
@@ -33,6 +34,12 @@ const NavbarB = () => {
           </Nav>
         </Container>
       </Navbar>
+      <div>
+        <h1 style={{
+          position:"relative",
+          top:"20px"
+        }}><center><GreetingComponent/> User,Welcome to Kafene Order Management</center></h1>
+      </div>
     </>
   );
 }

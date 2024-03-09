@@ -16,7 +16,7 @@ const LoginPage=()=>{
   
   
   const Newh=()=>{
-     history("/orders")
+     history("/NavbarB")
     }
 
   const handleClick=(event)=>{
@@ -75,7 +75,7 @@ const LoginPage=()=>{
       <input type="text" placeholder="Enter Username..." value={user} onChange={handleUser} style={{width:"300px",height:"40px",borderStyle:"inset",border:"2px solid black",borderRadius:"8px",padding:"5px"}}/><br/><br/>
       <input type="password" placeholder=" Enter Password..." value={pass} onChange={handlePass} style={{width:"300px",height:"40px",borderStyle:"outset",border:"2px solid black",borderRadius:"8px",padding:"5px"}}/> <br/><br/>
       <button type="submit" >Submit</button>
-    <Link to={"/orders"} style={{
+    <Link to={"/NavbarB"} style={{
       textDecoration:"none",
       color:"black",
       position:"relative",
