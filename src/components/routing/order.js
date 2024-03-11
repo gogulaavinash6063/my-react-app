@@ -28,7 +28,7 @@ const Order = () => {
   return (
     <>
       <NavbarB />
-      <div style={{backgroundImage: `url("../aa.png")`}}>
+      <div style={{backgroundImage: `url("./aa.png")`}}>
       <div className="container mt-4">
         <h1 style={{ fontStyle: "oblique" }}>Orders...</h1>
         <div className="mb-3">
@@ -73,14 +73,14 @@ const Order = () => {
             <label className="form-check-label" htmlFor="deliveredCheckbox">Delivered</label>
           </div>
         </div>
-        <table className="table table-bordered">
+        <table className="table table-bordered" style={{border:"3px solid purple"}}>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Customer</th>
-              <th>Date</th>
-              <th>Amount</th>
-              <th>Status</th>
+              <th style={{backgroundColor:"yellow"}}>ID</th>
+              <th style={{backgroundColor:"yellow"}}>Customer</th>
+              <th style={{backgroundColor:"yellow"}}>Date</th>
+              <th style={{backgroundColor:"yellow"}}>Amount</th>
+              <th style={{backgroundColor:"yellow"}}>Status</th>
             </tr>
           </thead>
           <tbody>

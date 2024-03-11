@@ -64,15 +64,15 @@ const Users = () => {
             </div>
           </div>
         </form>
-        <table className="table table-bordered">
+        <table className="table table-bordered" style={{border:"2px solid blue"}}>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>User Avatar</th>
-              <th>Full Name</th>
-              <th>DOB</th>
-              <th>Gender</th>
-              <th>Current Location</th>
+              <th style={{backgroundColor:"aqua"}}>ID</th>
+              <th style={{backgroundColor:"aqua"}}>User Avatar</th>
+              <th style={{backgroundColor:"aqua"}}>Full Name</th>
+              <th style={{backgroundColor:"aqua"}}>DOB</th>
+              <th style={{backgroundColor:"aqua"}}>Gender</th>
+              <th style={{backgroundColor:"aqua"}}>Current Location</th>
             </tr>
           </thead>
           <tbody>
