@@ -3,6 +3,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import GreetingComponent from '../sign/greeting';
+// import Toast from './Toast';
+
 
 const NavbarB = () => {
   return (
@@ -34,6 +36,8 @@ const NavbarB = () => {
           </Nav>
         </Container>
       </Navbar>
+      {/* <Toast/> */}
+
       <div>
         <h1 style={{
           position:"relative",

@@ -28,6 +28,7 @@ const Order = () => {
   return (
     <>
       <NavbarB />
+      <div style={{backgroundImage: `url("../aa.png")`}}>
       <div className="container mt-4">
         <h1 style={{ fontStyle: "oblique" }}>Orders...</h1>
         <div className="mb-3">
@@ -94,6 +95,7 @@ const Order = () => {
             ))}
           </tbody>
         </table>
+      </div>
       </div>
     </>
   );
