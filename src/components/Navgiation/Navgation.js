@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "../sign/sign";
 import NavbarB from "../header/header";
 import { DefaultPage } from "../routing/defaultpage";
+import Home from "../routing/Home";
 
 const Order = lazy(() => import("../routing/order"));
 const Users = lazy(() => import("../routing/users"));
@@ -15,6 +16,7 @@ const Navigation = () => {
         <Suspense fallback="loading.......">
           <Routes>
             <Route path="/" element={<LoginPage />} />
+            <Route path="/Home" element={<Home/>} />
             <Route path="/NavbarB" element={<NavbarB />} />
             <Route path="/orders" element={<Order />} />
             <Route path="/Items" element={<Items />} />
