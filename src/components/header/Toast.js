@@ -14,7 +14,7 @@ function Toast() {
           left: "40%",
           bottom: "50%",
           padding: "15px",
-          backgroundColor: "green",
+          backgroundColor: "violet",
         }}
       >
         Click Here to load products, users, orders

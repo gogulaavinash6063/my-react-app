@@ -11,21 +11,19 @@ const Items = lazy(() => import("../routing/Items"));
 
 const Navigation = () => {
   return (
-    <>
-      <BrowserRouter>
-        <Suspense fallback="loading.......">
-          <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/Home" element={<Home/>} />
-            <Route path="/NavbarB" element={<NavbarB />} />
-            <Route path="/orders" element={<Order />} />
-            <Route path="/Items" element={<Items />} />
-            <Route path="/Users" element={<Users />} />
-            <Route path="/*" element={<DefaultPage />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Suspense fallback="Loading...">
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/NavbarB" element={<NavbarB />} />
+          <Route path="/orders" element={<Order />} />
+          <Route path="/Items" element={<Items />} />
+          <Route path="/Users" element={<Users />} />
+          <Route path="/*" element={<DefaultPage />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 };
 

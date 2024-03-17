@@ -1,72 +1,4 @@
-//  import { useState } from "react"
-// import {  Link, useNavigate } from "react-router-dom"
 
-// import image1 from "./image.png"
-// import "./LoginPage.css"
-
-
-
-
-// const LoginPage=()=>{
-//   const[user,setUser]=useState("")
-//   const[pass,setPass]=useState("")
-//   const history=useNavigate()
-  
-  
-//   const Newh=()=>{
-//      history("/NavbarB")
-//     }
-
-//   const handleClick=(event)=>{
-//     event.preventDefault()
-//     if (!user.trim() || !pass.trim()) {
-//       alert("Please enter both username and password");
-//       return;
-//     }
-//     if(user===pass){
-//       Newh()
-//     }
-//     else{
-//       alert("username and password must be equal")
-//     }
-//   }
-//   const handleUser=(event)=>{
-//     setUser(event.target.value)
-//   }
-//   const handlePass=(event)=>{
-//     setPass(event.target.value)
-//   }
-//   return(
-//     < div style={{
-//       backgroundImage:`url(${image1})`,
-//       backgroundRepeat:"no-repeat",
-//       backgroundSize:"auto",
-//       backgroundPosition:"center",
-      
-//     }}>
-      
-      
-//       <form id="form" onSubmit={handleClick} style={{
-//         backgroundColor:"transparent"
-//       }}><header>
-//     <h2>LOGIN</h2>
-//   </header>
-//       <input type="text" placeholder="Enter Username..." value={user} onChange={handleUser} style={{width:"300px",height:"40px",borderStyle:"inset",border:"2px solid black",borderRadius:"8px",padding:"5px"}}/><br/><br/>
-//       <input type="password" placeholder=" Enter Password..." value={pass} onChange={handlePass} style={{width:"300px",height:"40px",borderStyle:"outset",border:"2px solid black",borderRadius:"8px",padding:"5px"}}/> <br/><br/>
-//       <button type="submit" >Submit</button>
-//     <Link to={"/NavbarB"} style={{
-//       textDecoration:"none",
-//       color:"black",
-//       position:"relative",
-//       left:"150px"
-//     }}>Skip---></Link>
-//     </form>
-    
-//     </div>
-    
-//   )
-// }
-// export default LoginPage
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -76,7 +8,7 @@ const LoginPage = () => {
   const history = useNavigate();
 
   const Newh = () => {
-    history("/NavbarB");
+    history("/Home");
   };
 
   const handleClick = (event) => {
@@ -169,7 +101,7 @@ const LoginPage = () => {
                       </div>
                       <div className="pt-1 mb-4">
                         <button type="submit" className="btn btn-dark btn-lg btn-block">Submit</button>
-                        <Link to={"/NavbarB"} style={{
+                        <Link to={"/Home"} style={{
                        textDecoration:"none",
                          color:"black",
                          position:"relative",
