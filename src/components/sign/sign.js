@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -55,11 +54,11 @@ const LoginPage = () => {
                           className="fas fa-cubes fa-2x me-3"
                           style={{ color: "#ff6219" }}
                         />
-                        <span className="h1 fw-bold mb-0">Kafene</span>
+                        <span className="h1 fw-bold mb-0" style={{marginLeft:"-8px"}}>Kafene</span>
                       </div>
                       <h5
                         className="fw-normal mb-3 pb-3"
-                        style={{ letterSpacing: 1 }}
+                        style={{ letterSpacing: 1 ,marginLeft:"9px" }}
                       >
                         Login into your account
                       </h5>
@@ -71,54 +70,37 @@ const LoginPage = () => {
                           onChange={handleUser}
                           id="form2Example17"
                           className="form-control form-control-lg"
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            borderStyle: "inset",
-                            border: "2px solid black",
-                            borderRadius: "8px",
-                            padding: "5px",
-                          }}
                         />
                       </div>
                       <div className="form-outline mb-4">
                         <input
                           type="password"
-                          placeholder=" Enter Password..."
+                          placeholder="Enter Password..."
                           value={pass}
                           onChange={handlePass}
                           id="form2Example27"
-                            className="form-control form-control-lg"
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            borderStyle: "outset",
-                            border: "2px solid black",
-                            borderRadius: "8px",
-                            padding: "5px"
-                          }}
+                          className="form-control form-control-lg"
                         />
                       </div>
-                      <div className="pt-1 mb-4">
-                        <button type="submit" className="btn btn-dark btn-lg btn-block">Submit</button>
-                        <Link to={"/Home"} style={{
-                       textDecoration:"none",
-                         color:"black",
-                         position:"relative",
-                         left:"300px"
-                         }}>Skip---></Link> 
+                      <div className="pt-1 mb-">
+                        <button variant="primary" className="btn btn-dark btn-lg btn-block">Login</button>
+                        <Link to="/Home" className="d-block text-center mt-2">
+                        <button type="button" className="btn btn-secondary btn-lg btn-block mt-3">Guest Login</button>
+                        </Link>
                       </div>
                       <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
                         <a href="#!" className="small text-muted">
                           Forgot password?
                         </a>
                       </p>
-                      <a href="#!" className="small text-muted">
-                        Terms of use.
-                      </a>
-                      <a href="#!" className="small text-muted">
-                        Privacy policy
-                      </a>
+                      <div className="d-flex justify-content-between">
+                        <a href="#!" className="small text-muted">
+                          Terms of use.
+                        </a>
+                        <a href="#!" className="small text-muted">
+                          Privacy policy
+                        </a>
+                      </div>
                     </form>
                   </div>
                 </div>

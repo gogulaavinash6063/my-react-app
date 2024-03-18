@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavbarB from "../header/header";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import GlowingCircles from "./Glowing";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -50,7 +51,7 @@ const Users = () => {
       <div className="container mt-4">
         <h1 style={{ fontStyle: "oblique" }}>Users.....</h1>
         {loading ? (
-          <p>Loading...</p>
+          <GlowingCircles/>
         ) : (
           <form onSubmit={handleClick} className="mb-3">
             <div className="input-group">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavbarB from "../header/header";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import GlowingCircles from "./Glowing";
 
 const Order = () => {
   const [allProducts, setAllProducts] = useState([]);
@@ -84,7 +85,7 @@ const Order = () => {
           </label>
         </div>
         {loading ? (
-          <p>Loading...</p>
+          <GlowingCircles/>
         ) : error ? (
           <p>Error: {error}</p>
         ) : (

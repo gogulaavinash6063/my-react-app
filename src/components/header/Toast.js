@@ -1,13 +1,14 @@
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Button from 'react-bootstrap/Button'; // Import Bootstrap Button component
 
 function Toast() {
   const notify = () => toast("Go to orders, products, items!");
 
   return (
     <div>
-      <button
+      <Button
         onClick={notify}
         style={{
           position: "absolute",
@@ -18,7 +19,7 @@ function Toast() {
         }}
       >
         Click Here to load products, users, orders
-      </button>
+      </Button>
       <ToastContainer
         style={{
             padding:"20px",

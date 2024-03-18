@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavbarB from "../header/header";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import GlowingCircles from "./Glowing";
 
 const Items = () => {
   const [products, setProducts] = useState([]);
@@ -49,7 +50,7 @@ const Items = () => {
           </div>
         </div>
         {loading ? (
-          <p>Loading...</p>
+          <GlowingCircles/>
         ) : (
           <table className="table table-bordered" style={{ borderColor: 'blue', padding: "20px", alignItems: "center" }}>
             <thead>
